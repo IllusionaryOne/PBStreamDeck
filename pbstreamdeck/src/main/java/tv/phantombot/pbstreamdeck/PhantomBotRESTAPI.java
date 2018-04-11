@@ -33,7 +33,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Responsible for interacting with the PhantomBot REST API.
  * 
- * @author Shawn Hill
+ * @author IllusionaryOne
  */
 public class PhantomBotRESTAPI {
 	private String botURL;

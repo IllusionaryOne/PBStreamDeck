@@ -4,7 +4,7 @@
 
 	<groupId>tv.phantombot</groupId>
 	<artifactId>pbstreamdeck</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>pbstreamdeck</name>
@@ -107,7 +107,9 @@
                     		<resource>
                         		<directory>${basedir}/src/main/resources/</directory>
                         		<includes>
-                            		<include>streamdeck.properties.default</include>
+                            			<include>streamdeck.properties.default</include>
+                            			<include>HOWTORUN.txt</include>
+                            			<include>pblogo.png</include>
                         		</includes>
                     		</resource>
     		            </resources>
@@ -159,19 +161,19 @@
                             <mainClass>tv.phantombot.pbstreamdeck.PBStreamDeck</mainClass>
                             <preCp>anything</preCp>
                         </classPath>
-                        <!--<icon>src/main/resources/icon/application.ico</icon>-->
+                        <icon>src/main/resources/pblogo.ico</icon>
                         <jre>
                             <minVersion>1.8.0</minVersion>
                             <jdkPreference>preferJre</jdkPreference>
                         </jre>
                         <versionInfo>
-                            <fileVersion>1.0.0.0</fileVersion>
+                            <fileVersion>${project.version}</fileVersion>
                             <txtFileVersion>${project.version}</txtFileVersion>
-                            <fileDescription>${project.name}</fileDescription>
-                            <copyright>2018 Phantombot.tv</copyright>
-                            <productVersion>1.0.0.0</productVersion>
-                            <txtProductVersion>1.0.0.0</txtProductVersion>
-                            <productName>${project.name}</productName>
+                            <fileDescription>PhantomBot Elgato StreamDeck Interface</fileDescription>
+                            <copyright>Copyright (c) 2018, PhantomBot</copyright>
+                            <productVersion>${project.version}</productVersion>
+                            <txtProductVersion>${project.version}</txtProductVersion>
+                            <productName>PhantomBot Elgato StreamDeck Interface</productName>
                             <companyName>PhantomBot</companyName>
                             <internalName>PhantomBot</internalName>
                             <originalFilename>PBStreamDeck.exe</originalFilename>
