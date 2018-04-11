@@ -40,12 +40,25 @@ public class PhantomBotRESTAPI {
 	private String botName;
 	private String botAPIAuthKey;
 	
+	/**
+	 * Constructor for PhantomBotRESTAPI
+	 * 
+	 * @param botURL The URL that PhantomBot is hosting the REST API service on.
+	 * @param botName The name of the PhantomBot instance, will be used as the actor.
+	 * @param botAPIAuthKey The webauth key from botlogin.txt.
+	 */
 	public PhantomBotRESTAPI(String botURL, String botName, String botAPIAuthKey) {
 		this.botURL = botURL;
 		this.botName = botName;
 		this.botAPIAuthKey = botAPIAuthKey;
 	}
 	
+	/**
+	 * Calls the PhantomBot REST API
+	 * 
+	 * @param message The message/command to send to the REST API.
+	 * @return A String object that contains the value back from REST or another error message.
+	 */
 	public String callAPI(String message) {
 		URL url;
 		InputStream inputStream = null;
