@@ -1,0 +1,31 @@
+# streamdeck.properties.default
+#
+# This file contains sample configuration data to create a
+# streamdeck.properties file from.
+#
+
+# The name of your PhantomBot.  This is used to execute commands
+# and to perform a chat operation.
+#
+botname=phantombot
+
+# The URL to your PhantomBot web server.  For local operations
+# this will be http://localhost:25000 (unless the port has been
+# changed).  For remote servers, use the full hostname and port
+# along with http or https, depending upon your configuration.
+#
+# Sample when running locally:
+boturl=http://localhost:25000
+
+# Sample when running remotely with SSL certificates:
+# boturl=https://bot.phantombot.tv:25000
+
+# The webauth key from your botlogin.txt file
+#
+botapiauthkey=abcdefghijklmop1234
+
+# Commands to run or things to say in chat.  The key is the command
+# line option to pass in to execute the command/chat text.
+#
+runmods=!mods
+sayhello=Hello there!
