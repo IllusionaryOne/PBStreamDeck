@@ -4,7 +4,7 @@
 
 	<groupId>tv.phantombot</groupId>
 	<artifactId>pbstreamdeck</artifactId>
-	<version>1.0.0.1</version>
+	<version>1.0.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>pbstreamdeck</name>
@@ -154,7 +154,7 @@
 							<goal>launch4j</goal>
 						</goals>
 						<configuration>
-							<headerType>console</headerType>
+							<headerType>gui</headerType>
 							<jar>${project.build.directory}/${project.artifactId}-${project.version}-shaded.jar</jar>
 							<outfile>${project.build.directory}/PBStreamDeck.exe</outfile>
 							<downloadUrl>http://java.com/download</downloadUrl>

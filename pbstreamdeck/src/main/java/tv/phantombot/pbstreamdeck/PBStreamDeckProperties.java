@@ -44,24 +44,11 @@ public class PBStreamDeckProperties {
 	 * 
 	 * @return false on failure and true on success
 	 */
-	public boolean loadPropertiesFile(String pathToFile) {
-		try {
-			FileInputStream inputStream = new FileInputStream(pathToFile + "/streamdeck.properties");
-			appProperties.load(inputStream);
-			inputStream.close();
-			return true;
-		} catch (SecurityException ex) {
-			System.out.println("Cannot access streamdeck.properties due to security permissions.");
-			return false;
-		} catch (FileNotFoundException ex) {
-			System.out.println(
-    			"Properties file does not exist. Please copy streamdeck.properties.default to\r\n" +
-    			"streamdeck.properties and set the configuration settings.");
-			return false;
-		} catch (IOException ex) {
-			System.out.println("Error loading properties file: " + ex.getMessage());
-			return false;
-		}
+	public boolean loadPropertiesFile(String pathToFile) throws SecurityException, FileNotFoundException, IOException {
+		FileInputStream inputStream = new FileInputStream(pathToFile + "/streamdeck.properties");
+		appProperties.load(inputStream);
+		inputStream.close();
+		return true;
 	}
 
 	/**
