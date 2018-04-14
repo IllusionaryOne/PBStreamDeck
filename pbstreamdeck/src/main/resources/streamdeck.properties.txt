@@ -1,7 +1,7 @@
-# streamdeck.properties.default
+# streamdeck.properties.txt
 #
-# This file contains sample configuration data to create a
-# streamdeck.properties file from.
+# This file contains configuration data for the PhantomBot
+# StreamDeck application.
 #
 
 # The name of your PhantomBot.  This is used to execute commands
@@ -15,6 +15,7 @@ botname=phantombot
 # along with http or https, depending upon your configuration.
 #
 # Sample when running locally:
+#
 boturl=http://localhost:25000
 
 # Sample when running remotely with SSL certificates:

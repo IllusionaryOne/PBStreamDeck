@@ -45,7 +45,7 @@ public class PBStreamDeckProperties {
 	 * @return false on failure and true on success
 	 */
 	public boolean loadPropertiesFile(String pathToFile) throws SecurityException, FileNotFoundException, IOException {
-		FileInputStream inputStream = new FileInputStream(pathToFile + "/streamdeck.properties");
+		FileInputStream inputStream = new FileInputStream(pathToFile + "/streamdeck.properties.txt");
 		appProperties.load(inputStream);
 		inputStream.close();
 		return true;

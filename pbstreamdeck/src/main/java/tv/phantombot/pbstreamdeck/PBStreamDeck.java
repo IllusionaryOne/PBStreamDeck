@@ -24,10 +24,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Font;
 
+import com.github.sarxos.winreg.HKey;
+import com.github.sarxos.winreg.RegistryException;
+import com.github.sarxos.winreg.WindowsRegistry;
+
 /**
- * Main class for PBStreamDeck.
+ * Main class for PBStreamDeck.  To run this without the application being fully
+ * installed via InnoSetup run with the parameters of [execute key] [path to config]
  */
 public class PBStreamDeck {
+	
 	/**
 	 * Main function for PBStreamDeck.
 	 * 
@@ -35,31 +41,46 @@ public class PBStreamDeck {
 	 *            Command line arguments.
 	 */
 	public static void main(String[] args) {
+		String configDir = "";
+		String fileKey = "";
 		PBStreamDeckProperties properties = new PBStreamDeckProperties();
 
-		if (args.length != 2) {
-			throwErrorGUI("usage: PBStreamDeck [path to config file] [execute key]");
+		if (args.length < 2) {
+			try {
+				WindowsRegistry registry = WindowsRegistry.getInstance();
+				configDir = registry.readString(HKey.HKCU, "SOFTWARE\\PhantomBot\\StreamDeck", "ConfigDir");
+			} catch (RegistryException ex) {
+				throwErrorGUI("error accessing registry: " + ex.getMessage());
+				return;
+			}
+		} else {
+			configDir = args[1];
+		}
+		
+		if (args.length == 0) {
+			throwErrorGUI("usage: PBStreamDeck [execute key]");
 			return;
 		}
 
 		try {
-			if (!properties.loadPropertiesFile(args[0])) {
+			if (!properties.loadPropertiesFile(configDir)) {
 				return;
 			}
 		} catch (SecurityException ex) {
-			throwErrorGUI("Cannot access streamdeck.properties due to security permissions.");
+			throwErrorGUI("Cannot access " + configDir + "/streamdeck.properties.txt due to security permissions.");
 			return;
 		} catch (FileNotFoundException ex) {
-			throwErrorGUI("Properties file does not exist: " + args[0] + "/streamdeck.properties");
+			throwErrorGUI("Properties file does not exist: " + configDir + "/streamdeck.properties.txt");
 			return;
 		} catch (IOException ex) {
 			throwErrorGUI("Error loading properties file: " + ex.getMessage());
 			return;
 		}
 
-		String commandOrText = properties.getCommandOrText(args[1]);
+		fileKey = args[0];
+		String commandOrText = properties.getCommandOrText(fileKey);
 		if (commandOrText == null) {
-			throwErrorGUI("That key does not seem to exist in the properties file: " + args[1]);
+			throwErrorGUI("That key does not seem to exist in the properties file: " + fileKey);
 			return;
 		}
 
