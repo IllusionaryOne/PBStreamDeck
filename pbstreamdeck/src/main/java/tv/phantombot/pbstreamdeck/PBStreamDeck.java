@@ -42,13 +42,16 @@ public class PBStreamDeck {
 	 */
 	public static void main(String[] args) {
 		String configDir = "";
+		String elgatoConfigDir = "";
 		String fileKey = "";
 		PBStreamDeckProperties properties = new PBStreamDeckProperties();
+		// ElgatoStreamDeckConfig streamDeck = new ElgatoStreamDeckConfig();
 
 		if (args.length < 2) {
 			try {
 				WindowsRegistry registry = WindowsRegistry.getInstance();
 				configDir = registry.readString(HKey.HKCU, "SOFTWARE\\PhantomBot\\StreamDeck", "ConfigDir");
+				// elgatoConfigDir = registry.readString(HKey.HKCU, "SOFTWARE\\PhantomBot\\StreamDeck", "ElgatoConfigDir");
 			} catch (RegistryException ex) {
 				throwErrorGUI("error accessing registry: " + ex.getMessage());
 				return;
@@ -56,6 +59,18 @@ public class PBStreamDeck {
 		} else {
 			configDir = args[1];
 		}
+		
+		/**
+		 * Remove support for this for now.  Still a work in progress and need to release
+		 * a patch for Let's Encrypt.
+		 * 
+		try {
+			streamDeck.loadProfiles(elgatoConfigDir);
+		} catch (IOException ex) {
+			throwErrorGUI("error loading Elgato profiles: " + ex.getMessage());
+			return;
+		}
+		**/
 		
 		if (args.length == 0) {
 			throwErrorGUI("usage: PBStreamDeck [execute key]");
@@ -76,7 +91,7 @@ public class PBStreamDeck {
 			throwErrorGUI("Error loading properties file: " + ex.getMessage());
 			return;
 		}
-
+		
 		fileKey = args[0];
 		String commandOrText = properties.getCommandOrText(fileKey);
 		if (commandOrText == null) {
@@ -85,7 +100,7 @@ public class PBStreamDeck {
 		}
 
 		PhantomBotRESTAPI restAPI = new PhantomBotRESTAPI(properties.getURL(), properties.getBotName(),
-				properties.getAPIAuthKey());
+				properties.getAPIAuthKey(), properties.getSSLCACheck().equals("enable"));
 		String restAPIResult = restAPI.callAPI(commandOrText);
 		if (!restAPIResult.contains("event posted")) {
 			throwErrorGUI(restAPIResult);
