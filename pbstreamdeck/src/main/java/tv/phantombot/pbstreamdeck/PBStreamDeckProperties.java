@@ -84,7 +84,7 @@ public class PBStreamDeckProperties {
 	 * @return Disable/enable SSL CA verification.
 	 */
 	public String getSSLCACheck() {
-		return appProperties.getProperty("sslcacheck");
+		return appProperties.getProperty("sslcacheck") == null ? "enable" : appProperties.getProperty("sslcacheck");
 	}
 	
 	/**
