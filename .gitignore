@@ -2,3 +2,4 @@
 /.recommenders/
 pbstreamdeck/target
 RemoteSystemsTempFiles
+pbstreamdeck/src/main/resources/Output

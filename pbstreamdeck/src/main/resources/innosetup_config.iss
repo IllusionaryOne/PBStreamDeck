@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "PBStreamDeck"
-#define MyAppVersion "1.0.2.0"
+#define MyAppVersion "1.0.5.0"
 #define MyAppPublisher "PhantomBot"
 #define MyAppURL "https://phantombot.tv"
 #define MyAppExeName "PBStreamDeck.exe"
