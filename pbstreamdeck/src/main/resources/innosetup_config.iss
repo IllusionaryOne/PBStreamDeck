@@ -7,6 +7,7 @@
 #define MyAppURL "https://phantombot.tv"
 #define MyAppExeName "PBStreamDeck.exe"
 #define LocalConfigDir "{localappdata}\PhantomBot\StreamDeck"
+#define ElgatoConfigDir "{userappdata}\Elgato\StreamDeck"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -36,7 +37,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 Source: "C:\Users\illus\git\PBStreamDeck\pbstreamdeck\target\PBStreamDeck.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\illus\git\PBStreamDeck\pbstreamdeck\target\README.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\illus\git\PBStreamDeck\pbstreamdeck\target\streamdeck.properties.txt"; DestDir: "{#LocalConfigDir}"; Flags: ignoreversion
+Source: "C:\Users\illus\git\PBStreamDeck\pbstreamdeck\target\streamdeck.properties.txt"; DestDir: "{#LocalConfigDir}"; Flags: onlyifdoesntexist
 Source: "C:\Users\illus\git\PBStreamDeck\pbstreamdeck\target\pblogo.png"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -49,3 +50,4 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 [Registry]
 Root: HKCU; Subkey: "Software\PhantomBot\StreamDeck"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\PhantomBot\StreamDeck"; ValueType: string; ValueName: "ConfigDir"; ValueData: "{#LocalConfigDir}"
+Root: HKCU; Subkey: "Software\PhantomBot\StreamDeck"; ValueType: string; ValueName: "ElgatoConfigDir"; ValueData: "{#ElgatoConfigDir}"

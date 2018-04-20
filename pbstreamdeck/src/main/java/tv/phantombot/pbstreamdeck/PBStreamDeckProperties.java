@@ -79,6 +79,15 @@ public class PBStreamDeckProperties {
 	}
 	
 	/**
+	 * Returns the setting for disabling SSL CA verification.
+	 * 
+	 * @return Disable/enable SSL CA verification.
+	 */
+	public String getSSLCACheck() {
+		return appProperties.getProperty("sslcacheck");
+	}
+	
+	/**
 	 * Returns the data to pass to the PhantomBot REST API.
 	 * 
 	 * @return The command or text to place into chat.

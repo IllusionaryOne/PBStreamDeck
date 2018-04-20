@@ -25,6 +25,14 @@ boturl=http://localhost:25000
 #
 botapiauthkey=abcdefghijklmop1234
 
+# Either enable or disable the SSL CA check. This should always 
+# be enable unless you have an exception when connecting to your
+# PhantomBot instance that is related to an SSL error.  You
+# have two choices.  Either add your certificate directly to 
+# your Java installation's cacerts keystore or set this to disable
+#
+sslcacheck=enable
+
 # Commands to run or things to say in chat.  The key is the command
 # line option to pass in to execute the command/chat text.
 #
