@@ -16,10 +16,10 @@ botname=phantombot
 #
 # Sample when running locally:
 #
-boturl=http://localhost:25000
+boturl=http://localhost:25000/dbquery
 
 # Sample when running remotely with SSL certificates:
-# boturl=https://bot.phantombot.tv:25000
+# boturl=https://bot.phantombot.tv:25000/dbquery
 
 # The webauth key from your botlogin.txt file
 #
